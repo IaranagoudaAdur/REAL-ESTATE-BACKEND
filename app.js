@@ -4,7 +4,7 @@ const cors = require("cors");
 const bodyparse = require('body-parser');
 require("dotenv").config();
 const bodyParser = require('body-parser');
-const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/auth'); 
 const {validateToken} = require("./middleware/token");
 const propertyRoutes = require('./routes/properties')
 const searchRoutes = require('./routes/searchRoutes');
@@ -12,7 +12,7 @@ const searchRoutes = require('./routes/searchRoutes');
 app.use(express.json({ limit: "50mb" }));
 app.use(
   express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 })
-);
+);  
 
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(
