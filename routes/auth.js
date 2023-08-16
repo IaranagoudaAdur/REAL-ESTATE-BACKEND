@@ -1,17 +1,15 @@
 const router = require("express").Router();
 const User= require('../models/userSchema');
-const dotenv = require('dotenv');
 const { encrypt, decrypt } = require('../middleware/userAuth');
-const { generateToken,validateToken } = require("../middleware/token");
+const { generateToken } = require("../middleware/token");
 
 router.post("/signup", async (req, res) => {
-
-    
     try {
         const userExists = await User.findOne({ email: req.body.email });
         if (userExists == null || !userExists) {
             const hashPassword = await encrypt(req.body.password);
             const value = await User.find().sort({ _id: -1 }).limit(1);
+            console.log(value)
             let user_id = "06PPD";
             if (value.length !== 0) {
                 user_id = parseInt(value[0].userId.split("D")[1]) + 1;

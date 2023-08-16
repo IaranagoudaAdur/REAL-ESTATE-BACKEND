@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
 const generateToken = (email) => {
     const token = jwt.sign({ email: email, }, process.env.JWT_TOKEN,{
         expiresIn: "24h"
